@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/dongsamyut/static/css/main.b6644c07.css",
-    "main.js": "/dongsamyut/static/js/main.6077497c.js",
+    "main.js": "/dongsamyut/static/js/main.740d06de.js",
     "index.html": "/dongsamyut/index.html",
     "main.b6644c07.css.map": "/dongsamyut/static/css/main.b6644c07.css.map",
-    "main.6077497c.js.map": "/dongsamyut/static/js/main.6077497c.js.map"
+    "main.740d06de.js.map": "/dongsamyut/static/js/main.740d06de.js.map"
   },
   "entrypoints": [
     "static/css/main.b6644c07.css",
-    "static/js/main.6077497c.js"
+    "static/js/main.740d06de.js"
   ]
 }
