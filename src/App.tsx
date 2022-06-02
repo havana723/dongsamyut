@@ -4,13 +4,13 @@ import Sparkle from "react-sparkle";
 import "./App.css";
 
 const imgs = [
-  "/img/137_0.png",
-  "/img/137_1.png",
-  "/img/137_2.png",
-  "/img/137_3.png",
-  "/img/137_4.png",
-  "/img/137_5.png",
-  "/img/137_6.png",
+  "./img/137_0.png",
+  "./img/137_1.png",
+  "./img/137_2.png",
+  "./img/137_3.png",
+  "./img/137_4.png",
+  "./img/137_5.png",
+  "./img/137_6.png",
 ];
 
 const Background = styled.div`
