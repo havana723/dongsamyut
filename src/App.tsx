@@ -70,7 +70,7 @@ const ImgDiv = styled.div`
   transition: all 0.4s ease-in-out;
 
   &:hover {
-    transform: scale(1.4);
+    transform: scale(1.2);
   }
 `;
 
@@ -94,6 +94,7 @@ const Img = styled.img`
 function App() {
   const mx_cnt = 6;
   const cnt = 2;
+  const lastUpdate = new Date();
   return (
     <>
       <Background>
@@ -109,6 +110,12 @@ function App() {
           {cnt <= mx_cnt ? <Img src={imgs[cnt]} /> : <Img src={imgs[mx_cnt]} />}
         </ImgDiv>
         <Text>{cnt} 명</Text>
+        <span>
+          <>
+            마지막 갱신: {lastUpdate.getMonth() + 1} 월 {lastUpdate.getDay()} 일{" "}
+            {lastUpdate.getHours()} 시 {lastUpdate.getMinutes()} 분
+          </>
+        </span>
       </Background>
     </>
   );

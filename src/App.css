@@ -8,6 +8,9 @@ div#root {
   height: 100%;
   font-family: "PFStardust", sans-serif;
   overflow: hidden;
+  user-select: none;
+  text-align: center;
+  color: white;
 }
 
 body {
