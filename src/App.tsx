@@ -2,16 +2,15 @@ import styled from "@emotion/styled";
 import React from "react";
 import Sparkle from "react-sparkle";
 import "./App.css";
+import img0 from "./img/137_0.png";
+import img1 from "./img/137_1.png";
+import img2 from "./img/137_2.png";
+import img3 from "./img/137_3.png";
+import img4 from "./img/137_4.png";
+import img5 from "./img/137_5.png";
+import img6 from "./img/137_6.png";
 
-const imgs = [
-  "./img/137_0.png",
-  "./img/137_1.png",
-  "./img/137_2.png",
-  "./img/137_3.png",
-  "./img/137_4.png",
-  "./img/137_5.png",
-  "./img/137_6.png",
-];
+const imgs = [img0, img1, img2, img3, img4, img5, img6];
 
 const Background = styled.div`
   background-color: black;
@@ -39,7 +38,7 @@ const Background = styled.div`
 const Title = styled.div`
   color: white;
   text-align: center;
-  height: 10vh;
+  height: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,7 +48,7 @@ const Title = styled.div`
 const Text = styled.div`
   color: white;
   text-align: center;
-  height: 10vh;
+  height: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,7 +57,7 @@ const Text = styled.div`
 
 const ImgDiv = styled.div`
   position: relative;
-  height: 60vh;
+  height: 60%;
   width: min(60vh, 100vw);
   margin-left: auto;
   margin-right: auto;
@@ -75,7 +74,7 @@ const ImgDiv = styled.div`
 `;
 
 const Img = styled.img`
-  height: min(40vh, 100vw);
+  height: min(80%, 100vw);
   animation: floating 4s ease-in-out infinite;
 
   @keyframes floating {
