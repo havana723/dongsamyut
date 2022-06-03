@@ -16,7 +16,6 @@ const Background = styled.div`
   background-color: black;
   height: 100%;
   width: 100%;
-  overflow: hidden;
   animation: hue 8s infinite linear;
 
   @keyframes hue {
@@ -70,11 +69,12 @@ const ImgDiv = styled.div`
 
   &:hover {
     transform: scale(1.2);
+    filter: drop-shadow(0px 0px 15px #407890);
   }
 `;
 
 const Img = styled.img`
-  height: min(80%, 100vw);
+  height: min(100%, 100vw);
   animation: floating 4s ease-in-out infinite;
 
   @keyframes floating {
@@ -86,6 +86,26 @@ const Img = styled.img`
     }
     100% {
       transform: translate(0, -0vh);
+    }
+  }
+`;
+
+const ImgContatiner = styled.div`
+  height: min(70%, 100vw);
+  animation: rotating 11s ease-in-out infinite;
+
+  @keyframes rotating {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(8deg);
+    }
+    75% {
+      transform: rotate(-8deg);
+    }
+    100% {
+      transform: rotate(-0deg);
     }
   }
 `;
@@ -103,16 +123,22 @@ function App() {
           flickerSpeed="slowest"
           overflowPx={0}
         />
-        <div style={{ height: "10vh" }} />
+        <div style={{ height: "10%" }} />
         <Title>동사몇?</Title>
         <ImgDiv>
-          {cnt <= mx_cnt ? <Img src={imgs[cnt]} /> : <Img src={imgs[mx_cnt]} />}
+          <ImgContatiner>
+            {cnt <= mx_cnt ? (
+              <Img src={imgs[cnt]} />
+            ) : (
+              <Img src={imgs[mx_cnt]} />
+            )}
+          </ImgContatiner>
         </ImgDiv>
         <Text>{cnt} 명</Text>
         <span>
           <>
             마지막 갱신: {lastUpdate.getMonth() + 1} 월 {lastUpdate.getDay()} 일{" "}
-            {lastUpdate.getHours()} 시 {lastUpdate.getMinutes()} 분
+            {lastUpdate.getHours()} 시 {lastUpdate.getMinutes()} 분 {"->"}
           </>
         </span>
       </Background>
