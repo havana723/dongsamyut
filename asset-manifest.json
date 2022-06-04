@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/dongsamyut/static/css/main.d64bb2f8.css",
-    "main.js": "/dongsamyut/static/js/main.a37f089c.js",
+    "main.css": "/dongsamyut/static/css/main.6af01045.css",
+    "main.js": "/dongsamyut/static/js/main.d4e0ce4d.js",
     "static/media/137_5.png": "/dongsamyut/static/media/137_5.0614729e3f02023c6e5c.png",
     "static/media/137_4.png": "/dongsamyut/static/media/137_4.2b416246d384983da362.png",
     "static/media/137_6.png": "/dongsamyut/static/media/137_6.992ce0740d4a1ee0e01d.png",
@@ -10,11 +10,11 @@
     "static/media/137_1.png": "/dongsamyut/static/media/137_1.5dbecfedb8af4b8595b9.png",
     "static/media/137_0.png": "/dongsamyut/static/media/137_0.9c70cf33807f52a89d33.png",
     "index.html": "/dongsamyut/index.html",
-    "main.d64bb2f8.css.map": "/dongsamyut/static/css/main.d64bb2f8.css.map",
-    "main.a37f089c.js.map": "/dongsamyut/static/js/main.a37f089c.js.map"
+    "main.6af01045.css.map": "/dongsamyut/static/css/main.6af01045.css.map",
+    "main.d4e0ce4d.js.map": "/dongsamyut/static/js/main.d4e0ce4d.js.map"
   },
   "entrypoints": [
-    "static/css/main.d64bb2f8.css",
-    "static/js/main.a37f089c.js"
+    "static/css/main.6af01045.css",
+    "static/js/main.d4e0ce4d.js"
   ]
 }
