@@ -7,23 +7,27 @@
 }
 
 body,
-html,
-div#root {
-  height: 100%;
+html {
   font-family: "PFStardust", sans-serif;
   overflow: hidden;
   user-select: none;
   text-align: center;
   color: white;
-  overscroll-behavior-y: contain;
+  margin: 0;
+  padding: 0;
 }
 
-body {
+div#root {
+  font-family: "PFStardust", sans-serif;
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
+}
+
+button {
+  font-family: "PFStardust", sans-serif;
 }
 
 @font-face {
