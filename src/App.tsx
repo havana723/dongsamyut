@@ -57,14 +57,14 @@ const Text = styled.div`
 const ImgDiv = styled.div`
   position: relative;
   height: 60%;
-  width: min(60vh, 100vw);
+  width: min(60%, 100vw);
   margin-left: auto;
   margin-right: auto;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 10;
   transition: all 0.4s ease-in-out;
 
   &:hover {

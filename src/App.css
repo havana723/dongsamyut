@@ -15,6 +15,15 @@ div#root {
   user-select: none;
   text-align: center;
   color: white;
+  overscroll-behavior-y: contain;
+}
+
+body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 @font-face {
