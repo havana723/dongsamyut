@@ -7,9 +7,6 @@ import "./App.css";
 import FloatingImage from "./components/FloatingImage";
 import Modal from "./components/modal";
 
-const baseURL = process.env.REACT_APP_API_ENDPOINT;
-axios.defaults.baseURL = baseURL;
-
 const Background = styled.div`
   background-color: black;
   height: 100%;

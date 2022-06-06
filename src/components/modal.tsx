@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import axios from "axios";
 import React, { useState } from "react";
 import { FiChevronDown, FiChevronUp, FiX } from "react-icons/fi";
 
@@ -79,6 +80,19 @@ const SubmitButton = styled.button`
   }
 `;
 
+const post = (input: number) => {
+  axios
+    .post("/history", {
+      cnt: input,
+    })
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 const Modal: React.FC<Props> = (props) => {
   const [input, setInput] = useState(props.cnt);
 
@@ -104,6 +118,7 @@ const Modal: React.FC<Props> = (props) => {
               <div style={{ width: "10%" }} />
               <SubmitButton
                 onClick={() => {
+                  post(input);
                   props.update(input);
                   props.close();
                 }}
