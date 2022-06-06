@@ -1,10 +1,14 @@
 import styled from "@emotion/styled";
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { FiEdit } from "react-icons/fi";
 import Sparkle from "react-sparkle";
 import "./App.css";
 import FloatingImage from "./components/FloatingImage";
 import Modal from "./components/modal";
+
+const baseURL = process.env.REACT_APP_API_ENDPOINT;
+axios.defaults.baseURL = baseURL;
 
 const Background = styled.div`
   background-color: black;
@@ -58,8 +62,27 @@ const EditIcon = styled.div`
 
 function App() {
   const [cnt, setCnt] = useState(0);
-  const lastUpdate = new Date();
+  const [lastUpdate, setLastUpdate] = useState(new Date());
   const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get<{ cnt: number }>("/howmany")
+      .then((res) => {
+        setCnt(res.data.cnt);
+      })
+      .catch((err) => {
+        setCnt(0);
+      });
+    axios
+      .get<{ update: string }>("/lastupdate")
+      .then((res) => {
+        setLastUpdate(new Date(res.data.update));
+      })
+      .catch((err) => {
+        setLastUpdate(new Date());
+      });
+  }, [cnt]);
 
   return (
     <>
@@ -85,8 +108,8 @@ function App() {
         <Text>{cnt} 명</Text>
         <span>
           <>
-            마지막 갱신: {lastUpdate.getMonth() + 1} 월 {lastUpdate.getDay()} 일{" "}
-            {lastUpdate.getHours()} 시 {lastUpdate.getMinutes()} 분
+            마지막 갱신: {lastUpdate.getMonth() + 1} 월 {lastUpdate.getDate()}{" "}
+            일 {lastUpdate.getHours()} 시 {lastUpdate.getMinutes()} 분
           </>
         </span>
       </Background>
