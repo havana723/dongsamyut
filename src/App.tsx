@@ -87,7 +87,7 @@ function App() {
         setToken(res.data.token);
       })
       .catch(() => { /** noop */})
-  }, [cnt]);
+  }, []);
 
   return (
     <>
