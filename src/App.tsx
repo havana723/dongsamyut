@@ -61,6 +61,7 @@ function App() {
   const [cnt, setCnt] = useState(0);
   const [lastUpdate, setLastUpdate] = useState(new Date());
   const [show, setShow] = useState(false);
+  const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
     axios
@@ -79,6 +80,13 @@ function App() {
       .catch((err) => {
         setLastUpdate(new Date());
       });
+    // 좀 비효율적이긴 하지만 귀찮아서 토큰을 localStorage에 따로 저장하지 않고 페이지 접속시마다 요청
+    axios
+      .get<{ token: string }>("/auth")
+      .then((res) => {
+        setToken(res.data.token);
+      })
+      .catch(() => { /** noop */})
   }, [cnt]);
 
   return (
@@ -89,10 +97,13 @@ function App() {
           show={show}
           close={() => setShow(false)}
           update={setCnt}
+          token={token ?? ''}
         />
-        <EditIcon onClick={() => setShow(true)}>
-          <FiEdit size={24} />
-        </EditIcon>
+        {token && (
+          <EditIcon onClick={() => setShow(true)}>
+            <FiEdit size={24} />
+          </EditIcon>
+        )}
         <Sparkle
           count={50}
           fadeOutSpeed={10}
