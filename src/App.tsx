@@ -72,14 +72,6 @@ function App() {
       .catch((err) => {
         setCnt(0);
       });
-    axios
-      .get<{ update: string }>("/lastupdate")
-      .then((res) => {
-        setLastUpdate(new Date(res.data.update));
-      })
-      .catch((err) => {
-        setLastUpdate(new Date());
-      });
     // 좀 비효율적이긴 하지만 귀찮아서 토큰을 localStorage에 따로 저장하지 않고 페이지 접속시마다 요청
     axios
       .get<{ token: string }>("/auth")
@@ -88,6 +80,19 @@ function App() {
       })
       .catch(() => { /** noop */})
   }, []);
+
+  useEffect(() => {
+    if (cnt > 0) {
+      axios
+        .get<{ update: string }>("/lastupdate")
+        .then((res) => {
+          setLastUpdate(new Date(res.data.update));
+        })
+        .catch((err) => {
+          setLastUpdate(new Date());
+        });
+    }
+  }, [cnt]);
 
   return (
     <>
