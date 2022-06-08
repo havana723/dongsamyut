@@ -3,11 +3,12 @@ import axios from "axios";
 import React, { useState } from "react";
 import { FiChevronDown, FiChevronUp, FiX } from "react-icons/fi";
 
-interface Props {
+interface ModalProps {
   cnt: number;
   show: boolean;
   close: () => void;
   update: (input: number) => void;
+  token: string;
 }
 
 const ModalOveray = styled.div`
@@ -80,10 +81,14 @@ const SubmitButton = styled.button`
   }
 `;
 
-const post = (input: number) => {
+const post = (input: number, token: string) => {
   axios
     .post("/history", {
       cnt: input,
+    }, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
     })
     .then((res) => {
       console.log(res);
@@ -93,7 +98,7 @@ const post = (input: number) => {
     });
 };
 
-const Modal: React.FC<Props> = (props) => {
+const Modal: React.FC<ModalProps> = (props) => {
   const [input, setInput] = useState(props.cnt);
 
   return (
@@ -118,7 +123,7 @@ const Modal: React.FC<Props> = (props) => {
               <div style={{ width: "10%" }} />
               <SubmitButton
                 onClick={() => {
-                  post(input);
+                  post(input, props.token);
                   props.update(input);
                   props.close();
                 }}
