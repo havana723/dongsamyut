@@ -58,7 +58,8 @@ const EditIcon = styled.div`
 `;
 
 function App() {
-  const [cnt, setCnt] = useState(0);
+  // null일 경우 로드되기 전으로 간주
+  const [cnt, setCnt] = useState<number | null>(null);
   const [lastUpdate, setLastUpdate] = useState(new Date());
   const [show, setShow] = useState(false);
   const [token, setToken] = useState<string | null>(null);
@@ -82,7 +83,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (cnt >= 0) {
+    if (cnt === null || cnt >= 0) {
       axios
         .get<{ update: string }>("/lastupdate")
         .then((res) => {
@@ -98,7 +99,7 @@ function App() {
     <>
       <Background>
         <Modal
-          cnt={cnt}
+          cnt={cnt ?? 0}
           show={show}
           close={() => setShow(false)}
           update={setCnt}
@@ -117,14 +118,18 @@ function App() {
         />
         <div style={{ height: "10%" }} />
         <Title>동사몇?</Title>
-        <FloatingImage cnt={cnt} />
-        <Text>{cnt} 명</Text>
-        <span>
+        <FloatingImage cnt={cnt ?? 0} />
+        {cnt !== null && (
           <>
-            마지막 갱신: {lastUpdate.getMonth() + 1} 월 {lastUpdate.getDate()}{" "}
-            일 {lastUpdate.getHours()} 시 {lastUpdate.getMinutes()} 분
+            <Text>{cnt} 명</Text>
+            <span>
+              <>
+                마지막 갱신: {lastUpdate.getMonth() + 1} 월 {lastUpdate.getDate()}{" "}
+                일 {lastUpdate.getHours()} 시 {lastUpdate.getMinutes()} 분
+              </>
+            </span>
           </>
-        </span>
+        )}
       </Background>
     </>
   );
