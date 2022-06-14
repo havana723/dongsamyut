@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiChevronDown, FiChevronUp, FiX } from "react-icons/fi";
 
 interface ModalProps {
@@ -99,7 +99,13 @@ const post = (input: number, token: string) => {
 };
 
 const Modal: React.FC<ModalProps> = (props) => {
-  const [input, setInput] = useState(props.cnt);
+  /**
+   * show === false일 때 Modal 컴포넌트가 따로 없어지지 않고, useState의 초기값은 첫 렌더링할 때만 가져와지기 때문에
+   * useEffect를 써서 cnt가 변화하면 대응을 해 주어야 한다.
+   */
+  const [input, setInput] = useState(0);
+
+  useEffect(() => setInput(props.cnt), [props.cnt]);
 
   return (
     <>
