@@ -82,7 +82,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (cnt > 0) {
+    if (cnt >= 0) {
       axios
         .get<{ update: string }>("/lastupdate")
         .then((res) => {
